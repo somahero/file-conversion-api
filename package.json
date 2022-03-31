@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "bin" : { "ffmpegapi" : "./app.js" },
+  "bin": {
+    "ffmpegapi": "./app.js"
+  },
   "scripts": {
     "build": "docker build -t ding/file-conversion-api .",
     "startd": "docker run -p 49160:3000 -d ding/file-conversion-api",
@@ -27,10 +29,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "express-markdown-reloaded": "^0.2.4",
-    "express-md": "^2.1.0",
     "fluent-ffmpeg": "^2.1.2",
     "fs": "^0.0.1-security",
+    "marked": "^4.0.12",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0",
     "unique-filename": "^1.1.1",

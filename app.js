@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const compression = require('compression');
-const expressMd = require('express-md');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
+const fs = require('fs');
+const  { marked } = require('marked');
 
 require('dotenv').config()
 
@@ -90,16 +91,16 @@ server.on('connection', function(socket) {
     server.keepAliveTimeout = timeout;
 });
 
-// routes to docs
-var mdRouter = expressMd({
-    dir: __dirname + '/docs',
-    url: '/',
-    vars: {
-      version: pjson.version
+// readme
+app.get('/', function(req, res) {
+  var path = __dirname + '/README.md';
+  fs.readFile(path, 'utf8', function(err, data) {
+    if(err) {
+      console.log(err);
     }
+    res.send(marked(data.toString()));
   });
-
-app.use('/',mdRouter)
+});
 
 app.use(function(req, res, next) {
   res.status(404).send({error: 'route not found'});

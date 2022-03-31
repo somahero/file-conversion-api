@@ -51,53 +51,49 @@ router.post('/audio', function (req, res,next) {
 /**
  * @swagger
  * /video/extract/images:
- *   post:
- *     summary: Images from video file.
- *     description: Extract images from video file.
- *     requestBody:
- *      content:
- *        multipart/form-data:
- *          schema:
- *            type: object
- *            properties:
- *               file:
- *                 type: string
- *                 format: binary
- *     parameters:
- *      - in: query
- *        name: compress
- *        schema:
- *          type: string
- *          enum: ['zip', 'gzip']
- *        description: Compress zip or gzip
- *     parameters:
- *      - in: query
- *        name: fps
- *        schema:
- *          type: integer
- *        description: FPS
- *     responses:
- *       200:
- *         description: Extracted image info
- *         content:
- *          application/json: 
- *             schema:
- *               type: object
- *               properties:
- *                 totalfiles:
- *                  type: integer
- *                 description:
+ *      post:
+ *          summary: Images from video file.
+ *          parameters:
+ *            - in: query
+ *              name: compress
+ *              schema:
  *                  type: string
- *                 files:
- *                  type: array
- *                  items:
- *                     type: object 
- *                     name: 
- *                      type: string
- *                      exmaple: "fuck"
- *                     url:
- *                      type: string
- *              
+ *                  enum: ['zip', 'gzip']
+ *                  description: Compress zip or gzip
+ *            - in: query
+ *              name: fps
+ *              schema:
+ *                  type: integer
+ *                  description: fps
+ *          requestBody:
+ *              content:
+ *                  multipart/form-data:
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      file:
+ *                          type: string
+ *                          format: binary
+ *          responses:
+ *              200:
+ *                  description: Extracted image info
+ *                  content:
+ *                      application/json: 
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              totalfiles:
+ *                                  type: integer
+ *                              description:
+ *                                  type: string
+ *                              files:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object 
+ *                                      name: 
+ *                                          type: string
+ *                                      url:
+ *                                          type: string
  */
 
 
