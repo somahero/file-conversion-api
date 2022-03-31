@@ -1,0 +1,11 @@
+.git
+.gitignore
+.dockerignore
+
+sample_files/
+docker-compose*
+Dockerfile*
+README*
+
+node_modules/
+npm-debug.log

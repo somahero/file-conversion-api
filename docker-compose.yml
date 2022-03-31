@@ -1,0 +1,14 @@
+
+version: '2.4'
+
+services:
+  app:
+    container_name: file-conversion-api
+    restart: on-failure
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "${EXTERNAL_PORT}:${HOST_PORT}"
